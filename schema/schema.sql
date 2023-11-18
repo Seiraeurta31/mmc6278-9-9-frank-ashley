@@ -1,3 +1,4 @@
+CREATE DATABASE mysql_project_db;
 USE mysql_project_db;
 
 CREATE TABLE users (
@@ -11,23 +12,22 @@ CREATE TABLE user_profiles (
   first_name VARCHAR(50) NOT NULL,
   last_name VARCHAR(50) NOT NULL,
   age INT NOT NULL,
-  insurance_company VARCHAR(50) NOT NULL,
+  name_of_insurance VARCHAR(50) NOT NULL,
   user_id INT NOT NULL,
   FOREIGN KEY (user_id) REFERENCES users (id)
 );
 
 CREATE TABLE allergies (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  medicine_allergy VARCHAR(50) NOT NULL
+  medicine_allergy VARCHAR(50) NOT NULL,
   user_id INT NOT NULL,
   FOREIGN KEY (user_id) REFERENCES users (id)
 );
 
-CREATE TABLE prescriptions (
+CREATE TABLE medicine (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   medicine_name VARCHAR(50) NOT NULL,
   dose_mg INT NOT NULL,
-  times_a_day INT NOT NULL,
   user_id INT NOT NULL,
   FOREIGN KEY (user_id) REFERENCES users (id)
 );
