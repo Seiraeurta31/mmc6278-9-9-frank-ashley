@@ -17,7 +17,7 @@ async function create(req, res) {
     console.log(err);
     return res.redirect(`/signup?error=${err.message}`);
   }
-}
 
+}
 
 module.exports = { create };

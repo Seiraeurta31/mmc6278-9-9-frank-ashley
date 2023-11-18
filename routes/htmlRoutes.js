@@ -3,6 +3,7 @@ const controllers = require("../controllers");
 const checkAuth = require("../middleware/auth");
 
 router.get("/", ({ session: { isLoggedIn } }, res) => {
+  if (isLoggedIn) return res.redirect("/private");
   res.render("index", { isLoggedIn });
 });
 
