@@ -1,6 +1,7 @@
 const bcrypt = require("bcrypt");
 const db = require("../config/connection");
 
+
 async function findByUsername(username) {
   const [[user]] = await db.query(
     `SELECT * FROM users WHERE username=?`,
@@ -20,6 +21,7 @@ async function create(username, password) {
     username,
     hashedPass,
   ]);
+
 
   return findByUsername(username);
 }

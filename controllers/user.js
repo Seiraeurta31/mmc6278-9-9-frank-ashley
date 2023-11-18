@@ -12,11 +12,12 @@ async function create(req, res) {
     if (!user) return res.redirect("/signup?error=error creating new user");
 
     req.session.isLoggedIn = true;
-    req.session.save(() => res.redirect("/"));
+    req.session.save(() => res.redirect("/private"));
   } catch (err) {
     console.log(err);
     return res.redirect(`/signup?error=${err.message}`);
   }
 }
+
 
 module.exports = { create };
