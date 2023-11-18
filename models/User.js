@@ -22,7 +22,7 @@ async function create(username, password) {
     hashedPass,
   ]);
 
-
+  //calls on function with submitted username and returns it to controllers/user.js
   return findByUsername(username);
 }
 // hashes the password before it's stored in mongo

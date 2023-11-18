@@ -25,11 +25,14 @@ async function login(req, res) {
 
     //set session logegdin status to true, save the session and send to /
     req.session.isLoggedIn = true;
+    req.session.userId = user.id;
     req.session.save(() => res.redirect("/private"));
   } catch (err) {
     res.status(500).send(err.message);
   }
 }
+
+
 
 async function logout(req, res) {
   req.session.destroy(() => res.redirect("/"));

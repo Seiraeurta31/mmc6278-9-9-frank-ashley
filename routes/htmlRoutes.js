@@ -17,8 +17,8 @@ router.get("/signup", async (req, res) => {
   res.render("signup", { error: req.query.error });
 });
 
-router.get("/private", checkAuth, ({ session: { isLoggedIn } }, res) => {
-  res.render("protected", { isLoggedIn });
+router.get("/private", checkAuth, ({ session: { isLoggedIn, userId } }, res) => {
+  res.render("dashboard", { isLoggedIn, userId });
 });
 
 module.exports = router;
