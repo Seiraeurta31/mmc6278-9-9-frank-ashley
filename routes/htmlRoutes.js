@@ -3,7 +3,7 @@ const controllers = require("../controllers");
 const checkAuth = require("../middleware/auth");
 
 router.get("/", ({ session: { isLoggedIn } }, res) => {
-  if (isLoggedIn) return res.redirect("/private");
+  if (isLoggedIn) return res.redirect("/private/req.session.userId");
   res.render("index", { isLoggedIn });
 });
 
@@ -17,7 +17,7 @@ router.get("/signup", async (req, res) => {
   res.render("signup", { error: req.query.error });
 });
 
-router.get("/private", checkAuth, ({ session: { isLoggedIn, userId } }, res) => {
+router.get("/private/:id", checkAuth, ({ session: { isLoggedIn, userId } }, res) => {
   res.render("dashboard", { isLoggedIn, userId });
 });
 

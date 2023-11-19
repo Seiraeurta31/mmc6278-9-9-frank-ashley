@@ -1,4 +1,11 @@
 const User = require("./User");
+const UserInformation = require("./UserInformation")
 
-module.exports = { User };
+
+
+
+
+
+
+module.exports = { User, UserInformation };
 
