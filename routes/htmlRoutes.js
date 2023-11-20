@@ -20,7 +20,7 @@ router.get("/signup", async (req, res) => {
 });
 
 
-// router.get("/private", checkAuth, controllers.userMeds.getUserMeds);
+// router.get("/private", checkAuth, controllers.userMeds.getAllUserMeds);
 
 router.get("/private", checkAuth, ({ session: { isLoggedIn, userId } }, res) => {
   res.render("dashboard", { isLoggedIn, userId });
