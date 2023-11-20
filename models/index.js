@@ -1,5 +1,5 @@
 const User = require("./User");
-const UserInformation = require("./UserInformation")
+const Medicine = require("./Medicine")
 
 
 
@@ -7,5 +7,5 @@ const UserInformation = require("./UserInformation")
 
 
 
-module.exports = { User, UserInformation };
+module.exports = { User, Medicine };
 
