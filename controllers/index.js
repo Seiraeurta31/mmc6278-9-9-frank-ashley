@@ -5,5 +5,5 @@ const userMeds = require("./userMeds");
 module.exports = {
   auth,
   user,
-  userMeds,
+  userMeds
 };

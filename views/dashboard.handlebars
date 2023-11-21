@@ -1,7 +1,11 @@
 {{> header}}
 <main>
   <h1>{{userId}} </h1>
-  {{#each cartItems}}
-  <p>{{this.medicine_name}}</p>
-  {{/each}}
+   <div>
+      {{#each userMeds}}
+        <div>
+          <p>{{this.medicine_name}}</p>    
+        </div>
+      {{/each}}
+    </div>
 </main>

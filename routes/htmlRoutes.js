@@ -3,6 +3,7 @@ const controllers = require("../controllers");
 const checkAuth = require("../middleware/auth");
 
 
+
 router.get("/", ({ session: { isLoggedIn } }, res) => {
   if (isLoggedIn) return res.redirect("/private");
   res.render("index", { isLoggedIn });
@@ -19,12 +20,6 @@ router.get("/signup", async (req, res) => {
   res.render("signup", { error: req.query.error });
 });
 
-
-// router.get("/private", checkAuth, controllers.userMeds.getAllUserMeds);
-
-router.get("/private", checkAuth, ({ session: { isLoggedIn, userId } }, res) => {
-  res.render("dashboard", { isLoggedIn, userId });
-});
-
+router.get("/private", checkAuth, controllers.userMeds.getAllUserMeds);
 
 module.exports = router;
