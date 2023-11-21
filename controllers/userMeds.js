@@ -4,15 +4,15 @@ async function getAllUserMeds(req, res) {
 
     const userId = req.session.userId
     const userMeds = await Medicine.queryAllUserMeds(userId)
-    console.log(userMeds)
+    // console.log(userMeds.medicine_name)
     res.render('dashboard', {userMeds, userId})
 }
 
-//add to user meds
+//post: add a new medcine
 
-//update user meds
+//put: update user medicine  redirect to /private
 
-//delete user meds
+//delete: remove user meds
 
 
 module.exports = { getAllUserMeds };
