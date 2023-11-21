@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const controllers = require("../controllers");
 const checkAuth = require("../middleware/auth");
-
+const db = require("../config/connection");
 
 
 router.get("/", ({ session: { isLoggedIn } }, res) => {

@@ -11,7 +11,6 @@ async function queryAllUserMeds(userId) {
 
 //post: add a new medcine to medicine table WHERE user_id=?
 
-
 //put: update user medicine to medicine table WHERE medicine_name=?
 
 //delete: remove user meds from medicine table WHERE medicine_id=?
