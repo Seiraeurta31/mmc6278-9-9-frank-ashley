@@ -22,4 +22,5 @@ router.get("/signup", async (req, res) => {
 
 router.get("/private", checkAuth, controllers.userMeds.getAllUserMeds);
 
+
 module.exports = router;
