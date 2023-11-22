@@ -28,6 +28,7 @@ CREATE TABLE medicine (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   medicine_name VARCHAR(50) NOT NULL,
   dose_mg INT NOT NULL,
+  frequency VARCHAR(50) NOT NULL,
   user_id INT NOT NULL,
   FOREIGN KEY (user_id) REFERENCES users (id)
 );

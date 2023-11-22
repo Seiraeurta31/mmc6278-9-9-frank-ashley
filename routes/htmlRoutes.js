@@ -9,7 +9,7 @@ router.get("/", ({ session: { isLoggedIn } }, res) => {
   res.render("index", { isLoggedIn });
 });
 
-//          ( path  ,      function )
+
 router.get("/login", async (req, res) => {
   if (req.session.isLoggedIn) return res.redirect("/");
   res.render("login", { error: req.query.error });
@@ -20,7 +20,11 @@ router.get("/signup", async (req, res) => {
   res.render("signup", { error: req.query.error });
 });
 
+
 router.get("/private", checkAuth, controllers.userMeds.getAllUserMeds);
+
+
+
 
 
 module.exports = router;

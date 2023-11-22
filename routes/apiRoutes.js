@@ -6,7 +6,8 @@ const checkAuth = require("../middleware/auth");
 router.post("/login", controllers.auth.login);
 router.get("/logout", controllers.auth.logout);
 router.post("/signup", controllers.user.create);
-// router.get("/private/:id", controllers.userInfo.);
+
+router.delete("/private", controllers.userMeds.removeMeds);
 
 
 
