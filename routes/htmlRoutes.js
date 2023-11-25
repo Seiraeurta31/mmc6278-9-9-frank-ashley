@@ -15,29 +15,28 @@ router.get("/login", async (req, res) => {
   res.render("login", { error: req.query.error });
 });
 
-//Router to GET template for sign up page
+//Route to GET template for sign up page
 router.get("/signup", async (req, res) => {
   if (req.session.isLoggedIn) return res.redirect("/");
   res.render("signup", { error: req.query.error });
 });
 
-//GET route to render /private page with all user medicines
+//Route to render /private page with all user medicines
 router.get("/private", checkAuth, controllers.userMedicine.getAllMedicines);
 
-//TO DO: add GET route for "/search" to render "search" template
+//Route for "/search" to render "search" template
 router.get("/search", async (req, res) => {
   if (req.session.isLoggedIn) return res.redirect("/");
   res.render("search");
 });
 
-//TO DO: add GET route for "/medicine"  to render "/medicine" template with medicine name from query params from URL
+//Route for "/medicine"  to render "/medicine" template with medicine name from query params from URL
 router.get("/medicine", async (req, res) => {
   if (req.session.isLoggedIn) return res.redirect("/");
   res.render("medicine");
 });
 
-//TO DO: add GET route for "/medicine/:id" to render "/medicine_id" template with specific medicine from req params from url
+//Route for "/medicine/:id" to render "/medicine_id" template with specific medicine from req params from url
 router.get("/medicine/:id", checkAuth, controllers.userMedicine.getMedicine);
-
 
 module.exports = router;
