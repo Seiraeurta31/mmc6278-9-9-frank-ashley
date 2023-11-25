@@ -21,9 +21,6 @@ router.get("/signup", async (req, res) => {
   res.render("signup", { error: req.query.error });
 });
 
-//Route to render /private page with all user medicines
-router.get("/private", checkAuth, controllers.userMedicine.getAllMedicines);
-
 //Route for "/search" to render "search" template
 router.get("/search", async (req, res) => {
   if (req.session.isLoggedIn) return res.redirect("/");
@@ -36,7 +33,5 @@ router.get("/medicine", async (req, res) => {
   res.render("medicine");
 });
 
-//Route for "/medicine/:id" to render "/medicine_id" template with specific medicine from req params from url
-router.get("/medicine/:id", checkAuth, controllers.userMedicine.getMedicine);
 
 module.exports = router;

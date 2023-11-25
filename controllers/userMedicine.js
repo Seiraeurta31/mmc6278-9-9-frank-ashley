@@ -18,7 +18,22 @@ async function getMedicine(req, res) {
   const isLoggedIn = req.session.isLoggedIn
 
   res.render('dashboard', {userMedicine, userId, isLoggedIn})
+}
 
+//Function for EXTERNAL API to validate and return medicine brand name
+async function getSearchResults(req, res) {
+
+  const isLoggedIn = req.session.isLoggedIn
+  const medName = req.query
+  medName = strings.ReplaceAll(medName, " ", "+")  //converts spaces in user input to +
+  const apiResponse = await fetch(`https://api.fda.gov/drug/label.json?search=openfda.brand_name:"${medName}"`) 
+  const data = await apiResponse.json()
+  
+    //If result is not found, data will contain {"error": {"code": "NOT_FOUND","message": "No matches found!"}}
+    
+    //If result is found, data will contain {"results": [{"openfda": {"brand_name": ["<medicine name>"]}}]}
+
+  res.render('search_results', {data, isLoggedIn})
 }
 
 //Function to add a new user medicine to medicine table
@@ -71,17 +86,16 @@ async function updateMedicine(req, res) {
     const success = await Medicine.queryUpdateMedicine(medicine_name, dosage_mg, frequency, medId)
     if (success)
       res.status(204).end()
+      // TO DO: Redirect user with window.location.replace('/private') in public index.js with action & method 
     else
       res.status(404).send('Unable to find Medicine')
-
+  
   } catch (err) {
       res.status(500).send('Error updating medication: ' + err.message)
   } 
-  
 }
 
-// TO DO: add function to delete a user medicine: Remove displayed med per /MedInfo/:id route
-// Must replace page with window.location.replace('/private') in public index.js with action & method 
+//Function to delete a user medicine: Remove displayed med per /MedInfo/:id route
 async function removeMedicine(req, res) {
   
   try{
@@ -96,8 +110,7 @@ async function removeMedicine(req, res) {
   catch (err) {
     res.status(500).send('Error deleting medication: ' + err.message)
   }
-
-  // must redirect user to /private from action in public/index.js
+   // TO DO: Redirect user with window.location.replace('/private') in public index.js with action & method 
 }
 
-module.exports = { getAllMedicines, getMedicine, updateMedicine, addMedicine, removeMedicine }; 
+module.exports = { getAllMedicines, getMedicine, getSearchResults, updateMedicine, addMedicine, removeMedicine }; 
