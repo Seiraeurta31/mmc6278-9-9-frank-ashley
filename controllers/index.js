@@ -1,9 +1,9 @@
 const auth = require("./auth");
 const user = require("./user");
-const userMeds = require("./userMeds");
+const userMedicine = require("./userMedicine");
 
 module.exports = {
   auth,
   user,
-  userMeds
+  userMedicine
 };

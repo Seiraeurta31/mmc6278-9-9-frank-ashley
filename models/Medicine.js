@@ -1,6 +1,7 @@
 const db = require("../config/connection");
 
-async function queryAllUserMeds(userId) {
+//QUERY to get all userMedicineS
+async function queryAllMedicine(userId) {
   const [allUserMeds] = await db.query(
     `SELECT * FROM medicine WHERE user_id=?`,
     userId
@@ -9,21 +10,35 @@ async function queryAllUserMeds(userId) {
   return allUserMeds;
 }
 
-//post: add a new medcine to medicine table WHERE user_id=?
+//QUERY to add new medcine to medicine table WHERE user_id=?
+async function queryAddMedicine(medicine_name, dosage_mg, frequency) {
+    await db.query(`
+    INSERT INTO medicine (medicine_name, dose_mg, frequency, user_id)
+    VALUES (?, ?, ?)
+    `, [medicine_name, dosage_mg, frequency, userId])
+    console.log (queryAllMedicine(2))  
+ 
+}
 
-//put: update user medicine to medicine table WHERE medicine_name=?
+//QUERY to update a medicine in medicine table WHERE medicine_name=?
+async function queryUpdateMedicine(medId) {
 
-//delete: remove user meds from medicine table WHERE medicine_id=?
-async function queryRemoveMeds(medId) {
-  const status = 0
+
+  console.log (queryAllMedicine(2))
+}
+
+//QUERY to remove user medication from medicine table WHERE medicine_id=?
+async function queryRemoveMedicine(medId) {
+  const success = false
   const [{affectedRows}] = await db.query(
     `DELETE FROM medicine WHERE id = ?`,
     req.params.id
   )
-  if (affectedRows === 0) return status
+  if (affectedRows === 0) return success = false
   
-  status = 1
-  return status
+  success = true
+  console.log (queryAllMedicine(2))
+  return success
 }
 
-module.exports = { queryAllUserMeds };
+module.exports = { queryAllMedicine, queryAddMedicine, queryUpdateMedicine, queryRemoveMedicine};
