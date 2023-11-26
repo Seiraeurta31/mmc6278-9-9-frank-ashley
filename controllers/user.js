@@ -13,7 +13,7 @@ async function create(req, res) {
 
     req.session.isLoggedIn = true;
     req.session.userId = user.id;
-    req.session.save(() => res.redirect("/private"));
+    req.session.save(() => res.redirect("/dashboard"));
   } catch (err) {
     console.log(err);
     return res.redirect(`/signup?error=${err.message}`);
