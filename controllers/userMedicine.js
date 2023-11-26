@@ -7,6 +7,8 @@ async function getAllMedicines(req, res) {
   const userMeds = await Medicine.queryAllMedicine(userId)
   const isLoggedIn = req.session.isLoggedIn
 
+  console.log(userMeds)
+
   res.render('dashboard', {userMeds, userId, isLoggedIn})
 }
 
@@ -16,6 +18,8 @@ async function getMedicine(req, res) {
   const userId = req.session.userId
   const userMedicine = await Medicine.queryMedicine(id)
   const isLoggedIn = req.session.isLoggedIn
+
+  console.log(userMedicine)
 
   res.render('medicine', {userMedicine, userId, isLoggedIn})
 }
@@ -58,6 +62,8 @@ async function addMedicine(req, res) {
     await Medicine.queryAddMedicine(medicine_name, dosage_mg, frequency)
     res.redirect('/dashboard')
 
+    console.log(getAllMedicines())
+
   } catch (err) {
       res.status(500).send('Error adding new medication: ' + err.message)
   } 
@@ -84,11 +90,16 @@ async function updateMedicine(req, res) {
         .send('Must include medicine name, dosage, and frequency')
 
     const success = await Medicine.queryUpdateMedicine(medicine_name, dosage_mg, frequency, medId)
+
+    console.log(success)
+    console.log(getAllMedicines())
+
     if (success)
       res.status(204).end()
       // TO DO: Redirect user with window.location.replace('/dashboard') in public index.js with action & method 
     else
       res.status(404).send('Unable to find Medicine')
+
   
   } catch (err) {
       res.status(500).send('Error updating medication: ' + err.message)
@@ -102,6 +113,9 @@ async function removeMedicine(req, res) {
     const medId = req.params.id
     const success = await Medicine.queryRemoveMedicine(medId)
 
+    console.log(success)
+    console.log(getAllMedicines())
+
     if (success)
       res.status(204).end()
     else
@@ -113,4 +127,4 @@ async function removeMedicine(req, res) {
    // TO DO: Redirect user with window.location.replace('/dashboard') in public index.js with action & method 
 }
 
-module.exports = { getAllMedicines, getMedicine, getSearchResults, updateMedicine, addMedicine, removeMedicine }; 
+module.exports = { getAllMedicines, getMedicine, updateMedicine, addMedicine, removeMedicine }; 

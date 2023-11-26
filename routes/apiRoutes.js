@@ -17,7 +17,7 @@ router.post("/signup", controllers.user.create);
 router.post("/add", controllers.userMedicine.addMedicine);
 
 //Route to update current medicine in database from "/medicine page/medicine id" page
-router.update("/medicine/:id", controllers.userMedicine.updateMedicine);
+router.put("/medicine/:id", controllers.userMedicine.updateMedicine);
 
 //Route to delete medicine in database from "/medicine page/medicine id" page
 router.delete("/medicine/:id", controllers.userMedicine.removeMedicine);

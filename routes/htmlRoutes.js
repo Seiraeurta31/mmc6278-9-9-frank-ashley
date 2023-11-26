@@ -3,6 +3,13 @@ const controllers = require("../controllers");
 const checkAuth = require("../middleware/auth");
 const db = require("../config/connection");
 
+
+//TEST ROUTE: 
+router.get("/test", controllers.userMedicine.getAllMedicines);
+
+
+
+
 //Route to GET template per login status (either dashboard or public page)
 router.get("/", ({ session: { isLoggedIn } }, res) => {
   if (isLoggedIn) return res.redirect("/dashboard");
