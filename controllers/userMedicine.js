@@ -10,7 +10,7 @@ async function getAllMedicines(req, res) {
   const userMeds = await Medicine.queryAllMedicine(userId)
   const isLoggedIn = true  //req.session.isLoggedIn
 
-  // console.log(userMeds)
+  console.log(userMeds)
 
   res.render('dashboard', {userMeds, userId, isLoggedIn})
 }
@@ -33,17 +33,17 @@ async function addMedicine(req, res) {
   try {
 
     //TESTING VALUES:
-    // const userId = 2
-    // const medicine_name = "applesauce"
-    // const dosage_mg = 20
-    // const frequency = "4x daily"
+    const userId = 2
+    const medicine_name = "peanuts"
+    const dosage_mg = 20
+    const frequency = "4x daily"
     
-    const userId = req.session.userId
-    const {
-        medicine_name,
-        dosage_mg,
-        frequency
-    } = req.body
+    // const userId = req.session.userId
+    // const {
+    //     medicine_name,
+    //     dosage_mg,
+    //     frequency
+    // } = req.body
 
     if (!(
         medicine_name &&
@@ -55,9 +55,8 @@ async function addMedicine(req, res) {
         .send('must include medicine name, dosage, and frequency')
 
     await Medicine.queryAddMedicine(medicine_name, dosage_mg, frequency, userId)
-    res.redirect('/dashboard')
-
-    console.log(getAllMedicines())
+    getAllMedicines()
+    res.render('index')
 
   } catch (err) {
       res.status(500).send('Error adding new medication: ' + err.message)
