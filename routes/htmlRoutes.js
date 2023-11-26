@@ -5,7 +5,7 @@ const db = require("../config/connection");
 
 
 //TEST ROUTE: 
-router.get("/test", controllers.userMedicine.updateMedicine);
+router.get("/test", controllers.userMedicine.addMedicine);
 
 
 

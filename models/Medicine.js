@@ -28,13 +28,13 @@ async function queryAddMedicine(medicine_name, dosage_mg, frequency, userId) {
 }
 
 //QUERY to update a medicine in medicine table WHERE medicine_name=?
-async function queryUpdateMedicine(medicine_name, dosage_mg, frequency, medId, userId) {
-  const success = false
+async function queryUpdateMedicine(medicine_name, dosage_mg, frequency, medId ) {
+  let success = false
 
-  console.log (medicine_name, dosage_mg, frequency, medId, userId)
+  console.log (medicine_name, dosage_mg, frequency, medId)
   const [{affectedRows}] = await db.query(`
     UPDATE medicine SET ? WHERE id = ?`, 
-    [{medicine_name, dosage_mg, frequency, userId}, medId]
+    [{medicine_name, dosage_mg, frequency}, medId]
   ) 
   if (affectedRows === 0 ) return success
 
@@ -44,7 +44,7 @@ async function queryUpdateMedicine(medicine_name, dosage_mg, frequency, medId, u
 
 //QUERY to remove user medication from medicine table WHERE medicine_id=?
 async function queryRemoveMedicine(medId) {
-  const success = false
+  let success = false
   const [{affectedRows}] = await db.query(
     `DELETE FROM medicine WHERE id = ?`,
     medId
@@ -52,7 +52,6 @@ async function queryRemoveMedicine(medId) {
   if (affectedRows === 0) return success
   
   success = true
-  console.log (queryAllMedicine(2))
   return success
 }
 
