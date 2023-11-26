@@ -5,14 +5,15 @@ async function getAllMedicines(req, res) {
 
   //TESTING VALUES:
   const userId = 2 
-  
   //const userId = req.session.userId
+
   const userMeds = await Medicine.queryAllMedicine(userId)
   const isLoggedIn = true  //req.session.isLoggedIn
 
   console.log(userMeds)
 
   res.render('dashboard', {userMeds, userId, isLoggedIn})
+  
 }
 
 //Function to retrieve a single user medicine from medicine table
@@ -34,7 +35,7 @@ async function addMedicine(req, res) {
 
     //TESTING VALUES:
     const userId = 2
-    const medicine_name = "peanuts"
+    const medicine_name = "dryer lint"
     const dosage_mg = 20
     const frequency = "4x daily"
     
@@ -55,8 +56,8 @@ async function addMedicine(req, res) {
         .send('must include medicine name, dosage, and frequency')
 
     await Medicine.queryAddMedicine(medicine_name, dosage_mg, frequency, userId)
-    getAllMedicines()
-    res.render('index')
+   
+    res.redirect('/dashboard')
 
   } catch (err) {
       res.status(500).send('Error adding new medication: ' + err.message)

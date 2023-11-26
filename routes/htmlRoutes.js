@@ -4,9 +4,8 @@ const checkAuth = require("../middleware/auth");
 const db = require("../config/connection");
 
 
-//TEST ROUTE: 
-router.get("/test", controllers.userMedicine.addMedicine);
-
+// //TEST ROUTE: 
+// router.get("/test", controllers.userMedicine.addMedicine);
 
 
 
@@ -28,9 +27,11 @@ router.get("/signup", async (req, res) => {
   res.render("signup", { error: req.query.error });
 });
 
-
 //Route for /dashboard which gets all user medicine and render /dashboard template
-router.get("/dashboard", checkAuth, controllers.userMedicine.getAllMedicines);
+router.get("/dashboard", controllers.userMedicine.getAllMedicines);
+
+// //Route for /dashboard which gets all user medicine and render /dashboard template
+// router.get("/dashboard", checkAuth, controllers.userMedicine.getAllMedicines);
 
 
 //Route for "/search" to render "search" template
