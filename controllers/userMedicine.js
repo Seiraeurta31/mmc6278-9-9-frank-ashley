@@ -3,11 +3,11 @@ const { Medicine } = require("../models");
 //Function to retrieve ALL user medcines from medicine table
 async function getAllMedicines(req, res) {
 
-  const userId = req.session.userId
+  const userId = 2  //req.session.userId
   const userMeds = await Medicine.queryAllMedicine(userId)
-  const isLoggedIn = req.session.isLoggedIn
+  const isLoggedIn = true  //req.session.isLoggedIn
 
-  console.log(userMeds)
+  // console.log(userMeds)
 
   res.render('dashboard', {userMeds, userId, isLoggedIn})
 }
@@ -15,13 +15,13 @@ async function getAllMedicines(req, res) {
 //Function to retrieve a single user medicine from medicine table
 async function getMedicine(req, res) {
 
-  const userId = req.session.userId
+  const id = req.params.id
   const userMedicine = await Medicine.queryMedicine(id)
   const isLoggedIn = req.session.isLoggedIn
 
   console.log(userMedicine)
 
-  res.render('medicine', {userMedicine, userId, isLoggedIn})
+  res.render('medicine', {userMedicine, isLoggedIn})
 }
 
 //Function for EXTERNAL API to validate and return medicine brand name
@@ -44,12 +44,19 @@ async function getMedicine(req, res) {
 async function addMedicine(req, res) {
 
   try {
+    // const userId = 2
+    // const medicine_name = "applesauce"
+    // const dosage_mg = 20
+    // const frequency = "4x daily"
+    
     const userId = req.session.userId
     const {
         medicine_name,
         dosage_mg,
         frequency
     } = req.body
+
+
     if (!(
         medicine_name &&
         dosage_mg &&
@@ -59,7 +66,7 @@ async function addMedicine(req, res) {
         .status(400)
         .send('must include medicine name, dosage, and frequency')
 
-    await Medicine.queryAddMedicine(medicine_name, dosage_mg, frequency)
+    await Medicine.queryAddMedicine(medicine_name, dosage_mg, frequency, userId)
     res.redirect('/dashboard')
 
     console.log(getAllMedicines())
@@ -74,12 +81,21 @@ async function addMedicine(req, res) {
 async function updateMedicine(req, res) {
 
   try {
-    const medId = req.params.id
-    const {
-        medicine_name,
-        dosage_mg,
-        frequency
-    } = req.body
+    const medId = 6
+    const userId = 2
+    const medicine_name = "bagel"
+    const dosage_mg = 20
+    const frequency = "4x daily"
+
+    // const medId = req.params.id
+    // const userId = req.session.userId
+    // const {
+    //     medicine_name,
+    //     dosage_mg,
+    //     frequency
+    // } = req.body
+
+
     if (!(
         medicine_name &&
         dosage_mg &&
@@ -88,8 +104,8 @@ async function updateMedicine(req, res) {
       return res
         .status(400)
         .send('Must include medicine name, dosage, and frequency')
-
-    const success = await Medicine.queryUpdateMedicine(medicine_name, dosage_mg, frequency, medId)
+   
+    const success = await Medicine.queryUpdateMedicine(medicine_name, dosage_mg, frequency, medId, userId)
 
     console.log(success)
     console.log(getAllMedicines())

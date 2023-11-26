@@ -16,30 +16,29 @@ async function queryMedicine(id) {
     `SELECT * FROM medicine WHERE id=?`,
     id
   );
-  console.log (userMed)
-  return allUserMeds;
+  return userMed;
 }
 
 //QUERY to add new medcine to medicine table WHERE user_id=?
-async function queryAddMedicine(medicine_name, dosage_mg, frequency) {
+async function queryAddMedicine(medicine_name, dosage_mg, frequency, userId) {
     await db.query(`
-    INSERT INTO medicine (medicine_name, dose_mg, frequency, user_id)
-    VALUES (?, ?, ?)
-    `, [medicine_name, dosage_mg, frequency, userId])
-    console.log (queryAllMedicine(2))   
+    INSERT INTO medicine (medicine_name, dosage_mg, frequency, user_id)
+    VALUES (?, ?, ?, ?)
+    `, [medicine_name, dosage_mg, frequency, userId])   
 }
 
 //QUERY to update a medicine in medicine table WHERE medicine_name=?
-async function queryUpdateMedicine(medicine_name, dosage_mg, frequency, medId) {
+async function queryUpdateMedicine(medicine_name, dosage_mg, frequency, medId, userId) {
   const success = false
+
+  console.log (medicine_name, dosage_mg, frequency, medId, userId)
   const [{affectedRows}] = await db.query(`
-  UPDATE inventory SET ? WHERE id = ?`, 
-  [{medicine_name, dosage_mg, frequency}, medId]
+    UPDATE medicine SET ? WHERE id = ?`, 
+    [{medicine_name, dosage_mg, frequency, userId}, medId]
   ) 
   if (affectedRows === 0 ) return success
 
   success = true
-  console.log (queryAllMedicine(2))
   return success
 }
 
