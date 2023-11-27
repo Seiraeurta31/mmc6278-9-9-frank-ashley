@@ -29,8 +29,6 @@ async function queryAddMedicine(medicine_name, dosage_mg, frequency, userId) {
 //QUERY to update a medicine in medicine table WHERE medicine_name=?
 async function queryUpdateMedicine(medicine_name, dosage_mg, frequency, medId ) {
   let success = false
-
-  console.log (medicine_name, dosage_mg, frequency, medId)
   const [{affectedRows}] = await db.query(`
     UPDATE medicine SET ? WHERE id = ?`, 
     [{medicine_name, dosage_mg, frequency}, medId]

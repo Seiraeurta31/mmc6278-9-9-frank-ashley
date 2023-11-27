@@ -4,13 +4,10 @@ const axios = require('axios');
 //Function to retrieve ALL user medcines from medicine table
 async function getAllMedicines(req, res) {
 
-  //TESTING VALUES:
-  const userId = 2 
-  //const userId = req.session.userId
+  const userId = req.session.userId
 
   const userMeds = await Medicine.queryAllMedicine(userId)
-  const isLoggedIn = true  //req.session.isLoggedIn
-
+  const isLoggedIn = req.session.isLoggedIn
 
   res.render('dashboard', {userMeds, userId, isLoggedIn})
   
@@ -26,7 +23,7 @@ async function getMedicine(req, res) {
   res.render('medicine', {userMedicine, isLoggedIn})
 }
 
-
+//Function to retrieve formal FDA approved medicine name from /search, or error if not found
 async function getMedNameSearch (searchName){
   try{
     const data = await axios.get(`https://api.fda.gov/drug/label.json?search=openfda.brand_name:"${searchName}"`);
@@ -45,29 +42,20 @@ async function getMedNameSearch (searchName){
   }
   catch (err){
     return ("Medicine not found")
-  }
-
-  
+  }  
 }
-
 
 //Function to add a new user medicine to medicine table
 async function addMedicine(req, res) {
 
   try {
-
-    //TESTING VALUES:
-    const userId = 2
-    const medicine_name = "dryer lint"
-    const dosage_mg = 20
-    const frequency = "4x daily"
     
-    // const userId = req.session.userId
-    // const {
-    //     medicine_name,
-    //     dosage_mg,
-    //     frequency
-    // } = req.body
+    const userId = req.session.userId
+    const {
+        medicine_name,
+        dosage_mg,
+        frequency
+    } = req.body
 
     if (!(
         medicine_name &&
@@ -93,13 +81,6 @@ async function updateMedicine(req, res) {
 
   try {
 
-    //TESTING VALUES:
-    // const medId = 2
-    // const userId = 2
-    // const medicine_name = "bagel"
-    // const dosage_mg = 20
-    // const frequency = "4x daily"
-
     const medId = req.params.id
     const userId = req.session.userId
     const {
@@ -119,14 +100,12 @@ async function updateMedicine(req, res) {
    
     const success = await Medicine.queryUpdateMedicine(medicine_name, dosage_mg, frequency, medId)
 
-
     if (success)
       res.status(204).end()
       // TO DO: Redirect user with window.location.replace('/dashboard') in public index.js with action & method 
     else
       res.status(404).send('Unable to find Medicine')
 
-  
   } catch (err) {
       res.status(500).send('Error updating medication: ' + err.message)
   } 
@@ -137,12 +116,8 @@ async function removeMedicine(req, res) {
   
   try{
 
-    //TESTING VALUES: 
-    // const medId = 2
-
     const medId = req.params.id
     const success = await Medicine.queryRemoveMedicine(medId)
-
 
     if (success)
       res.status(204).end()
