@@ -31,21 +31,30 @@ router.get("/dashboard", checkAuth, controllers.userMedicine.getAllMedicines);
 //***When search button is pressed, the page is redirected back and triggers external API data to validate user input for medicine name 
 //Search page is refreshed with result info below search 
 router.get("/search", async (req, res) => {
-  if (!req.session.isLoggedIn) return res.redirect("/")
+  if (!req.session.isLoggedIn) return res.redirect("/");
 
-  // if(req.query.searchTerm){ //if routed from /search?searchTerm=<userInput>
-  const searchName = "prozaca"
-  const response = await controllers.userMedicine.getMedNameSearch(searchName)
+  //TO DO: Get query param from URL working
+  if(req.query.medName){
+    const response = await controllers.userMedicine.getMedNameSearch(req.query.medName)
 
-  if(response) {
-    console.log("triggered")
-    res.render("search", {response})
-  }
+    
+    if(response == "Medicine not found"){
+      const error = response
+      res.render("search", {error})
+    }
+    else{
+      res.render("search", {response})
+    }
+      
+    
+  }  
   else{
     res.render("search")
   }
   
 });
+
+
 
 //Route for "/add" to render "search" add_medicine template & populates medicine name from URL query param
 router.get("/add", async (req, res) => {

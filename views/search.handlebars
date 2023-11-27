@@ -1,3 +1,11 @@
 <div>
-    <p>{{response}}</p>    
+    {{#if response}}
+    <p>{{response}}</p> 
+    {{/if}}
+
+    {{#if error}}
+    <p>{{error}}</p> 
+    {{/if}}
+
+
 </div>

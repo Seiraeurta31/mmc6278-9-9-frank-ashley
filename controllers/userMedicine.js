@@ -40,11 +40,11 @@ async function getMedNameSearch (searchName){
         }
       }]
     } = data.data
-    
+
     return medicine_name
   }
   catch (err){
-    return ("medicine not found")
+    return ("Medicine not found")
   }
 
   
