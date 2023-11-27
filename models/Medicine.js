@@ -6,7 +6,6 @@ async function queryAllMedicine(userId) {
     `SELECT * FROM medicine WHERE user_id=?`,
     userId
   );
-  console.log (allUserMeds)
   return allUserMeds;
 }
 

@@ -1,4 +1,5 @@
 const { Medicine } = require("../models");
+const axios = require('axios');
 
 //Function to retrieve ALL user medcines from medicine table
 async function getAllMedicines(req, res) {
@@ -10,7 +11,6 @@ async function getAllMedicines(req, res) {
   const userMeds = await Medicine.queryAllMedicine(userId)
   const isLoggedIn = true  //req.session.isLoggedIn
 
-  console.log(userMeds)
 
   res.render('dashboard', {userMeds, userId, isLoggedIn})
   
@@ -23,10 +23,33 @@ async function getMedicine(req, res) {
   let userMedicine = await Medicine.queryMedicine(id)
   const isLoggedIn = req.session.isLoggedIn
 
-  console.log(userMedicine)
-
   res.render('medicine', {userMedicine, isLoggedIn})
 }
+
+
+async function getMedNameSearch (searchName){
+  try{
+    const data = await axios.get(`https://api.fda.gov/drug/label.json?search=openfda.brand_name:"${searchName}"`);
+
+    const {
+      results:[{
+        openfda: {
+          brand_name: [
+            medicine_name
+          ]
+        }
+      }]
+    } = data.data
+    
+    return medicine_name
+  }
+  catch (err){
+    return ("medicine not found")
+  }
+
+  
+}
+
 
 //Function to add a new user medicine to medicine table
 async function addMedicine(req, res) {
@@ -120,8 +143,6 @@ async function removeMedicine(req, res) {
     const medId = req.params.id
     const success = await Medicine.queryRemoveMedicine(medId)
 
-    console.log(success)
-    console.log(getAllMedicines())
 
     if (success)
       res.status(204).end()
@@ -134,4 +155,4 @@ async function removeMedicine(req, res) {
    // TO DO: Redirect user with window.location.replace('/dashboard') in public index.js with action & method 
 }
 
-module.exports = { getAllMedicines, getMedicine, updateMedicine, addMedicine, removeMedicine }; 
+module.exports = { getAllMedicines, getMedicine, getMedNameSearch, updateMedicine, addMedicine, removeMedicine }; 

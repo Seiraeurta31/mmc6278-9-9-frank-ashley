@@ -8,11 +8,6 @@ router.get("/logout", controllers.auth.logout);
 router.post("/signup", controllers.user.create);
 
 
-//TO DO (Handled in front end index.js): On submit, get external API data to validate user input for medicine name 
-// User confirms name found and is redirected to "/add" with "add_medicine" template with specific medicine from req params from url 
-// - OR -  an error message is displayed
-
-
 //Route to post a new medicine to database from "/medicine" page
 router.post("/add", controllers.userMedicine.addMedicine);
 

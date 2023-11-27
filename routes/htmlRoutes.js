@@ -4,11 +4,6 @@ const checkAuth = require("../middleware/auth");
 const db = require("../config/connection");
 
 
-// //TEST ROUTE: 
-// router.get("/test", controllers.userMedicine.addMedicine);
-
-
-
 //Route to GET template per login status (either dashboard or public page)
 router.get("/", ({ session: { isLoggedIn } }, res) => {
   if (isLoggedIn) return res.redirect("/dashboard");
@@ -27,17 +22,29 @@ router.get("/signup", async (req, res) => {
   res.render("signup", { error: req.query.error });
 });
 
-//Route for /dashboard which gets all user medicine and render /dashboard template
-router.get("/dashboard", controllers.userMedicine.getAllMedicines);
 
 // //Route for /dashboard which gets all user medicine and render /dashboard template
-// router.get("/dashboard", checkAuth, controllers.userMedicine.getAllMedicines);
+router.get("/dashboard", checkAuth, controllers.userMedicine.getAllMedicines);
 
 
 //Route for "/search" to render "search" template
+//***When search button is pressed, the page is redirected back and triggers external API data to validate user input for medicine name 
+//Search page is refreshed with result info below search 
 router.get("/search", async (req, res) => {
-  if (!req.session.isLoggedIn) return res.redirect("/");
-  res.render("search");
+  if (!req.session.isLoggedIn) return res.redirect("/")
+
+  // if(req.query.searchTerm){ //if routed from /search?searchTerm=<userInput>
+  const searchName = "prozaca"
+  const response = await controllers.userMedicine.getMedNameSearch(searchName)
+
+  if(response) {
+    console.log("triggered")
+    res.render("search", {response})
+  }
+  else{
+    res.render("search")
+  }
+  
 });
 
 //Route for "/add" to render "search" add_medicine template & populates medicine name from URL query param
