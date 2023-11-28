@@ -17,12 +17,6 @@ CREATE TABLE user_profiles (
   FOREIGN KEY (user_id) REFERENCES users (id)
 );
 
--- CREATE TABLE allergies (
---   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
---   medicine_allergy VARCHAR(50) NOT NULL,
---   user_id INT NOT NULL,
---   FOREIGN KEY (user_id) REFERENCES users (id)
--- );
 
 CREATE TABLE medicine (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,

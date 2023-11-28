@@ -13,6 +13,7 @@ async function create(req, res) {
 
     req.session.isLoggedIn = true;
     req.session.userId = user.id;
+    req.session.userName = user.username;
     req.session.save(() => res.redirect("/dashboard"));
   } catch (err) {
     console.log(err);

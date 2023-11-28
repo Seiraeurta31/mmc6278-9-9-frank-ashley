@@ -12,6 +12,7 @@ async function login(req, res) {
     //collect username and password from database per username entered  
     const user = await User.findByUsername(username);
 
+
     //validate user info was found
     if (!user)
       return res.redirect("/login?error=username or password is incorrect");
@@ -26,6 +27,7 @@ async function login(req, res) {
     //set session logegdin status to true, save the session and send to /
     req.session.isLoggedIn = true;
     req.session.userId = user.id;
+    req.session.userName = user.username;
     req.session.save(() => res.redirect("/dashboard"));
   } catch (err) {
     res.status(500).send(err.message);

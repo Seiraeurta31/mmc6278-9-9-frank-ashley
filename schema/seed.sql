@@ -13,4 +13,4 @@ INSERT INTO medicine (medicine_name, dosage_mg, frequency, user_id)
 VALUES ("prozac", 20, "1x daily", 2);
 
 INSERT INTO medicine (medicine_name, dosage_mg, frequency, user_id)
-VALUES ("NAC", 600,"2x daily", 2);
+VALUES ("Tylenol EXTRA Strength", 600,"2x daily", 2);

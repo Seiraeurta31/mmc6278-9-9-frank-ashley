@@ -5,11 +5,13 @@ const axios = require('axios');
 async function getAllMedicines(req, res) {
 
   const userId = req.session.userId
-
-  const userMeds = await Medicine.queryAllMedicine(userId)
+  const username = req.session.userName
   const isLoggedIn = req.session.isLoggedIn
 
-  res.render('dashboard', {userMeds, userId, isLoggedIn})
+  const userMeds = await Medicine.queryAllMedicine(userId)
+
+
+  res.render('dashboard', {userMeds, userId, isLoggedIn, username})
   
 }
 

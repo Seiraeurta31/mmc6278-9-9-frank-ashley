@@ -30,7 +30,6 @@ body {
 
 main {
   box-sizing: border-box;
-  
   width: 80%;
   max-width: 960px;
   margin: 100px;
@@ -46,13 +45,13 @@ main form {
 }
 
 h1 {
-  font-size: calc(var(--font-size) * 2.25);
+  font-size: calc(var(--font-size) * 2.5);
 }
 h2 {
-  font-size: calc(var(--font-size) * 2);
+  font-size: calc(var(--font-size) * 1.5);
 }
 h3 {
-  font-size: calc(var(--font-size) * 1.5);
+  font-size: calc(var(--font-size) * 0.5);
 }
 
 a {
@@ -64,11 +63,16 @@ a:focus {
   color: var(--secondary);
 }
 
+
 button.btn {
   border: var(--text-color);
   border-radius: 4px;
   background-color: var(--secondary-light);
   margin: 20px;
+  font-family: helvetica;
+  font-weight:bolder;
+  font-size: 18px;
+  color:rgb(255, 255, 255);
   padding: calc(var(--space) * 0.75) calc(var(--space) * 2);
   cursor: pointer;
   transition: background-color 200ms;
@@ -89,6 +93,34 @@ button.btn-text:hover,
 button.btn-text:focus {
   color: var(--secondary);
 }
+
+.medicine-container{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+
+button.medicine-btn {
+  border: var(--text-color);
+  border-radius: 4px;
+  font-size: 16px;
+  font-family: helvetica;
+  font-weight:bolder;
+  color:rgb(23, 118, 144);
+  background-color: var(white);
+  margin: 20px;
+  width: 400px;
+  height: 40px;
+  padding: calc(var(--space) * 0.75) calc(var(--space) * 2);
+  cursor: pointer;
+  transition: background-color 200ms;
+}
+
+
+
+
+
 header {
   display: flex;
   flex-wrap: wrap;
@@ -140,6 +172,12 @@ header .site-logo {
   header .site-logo {
     font-size: var(--font-size);
   }
+
+  button.medicine-btn {
+    width: 300px;
+    height: 60px;
+  }
+
   header a {
     margin: calc(var(--space) / 2);
   }

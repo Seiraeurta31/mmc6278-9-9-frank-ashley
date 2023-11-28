@@ -1,14 +1,15 @@
 {{> header}}
 <main>
-  <h1>{{userId}} </h1>
-   <div>
-      <form class="test" action="/search?">
-        <button class="btn">Submit</button>
-      </form>
+  <h1>Welcome {{username}}! </h1>
+  <a href="/search">
+    <button class="btn">Add New Medication</button>
+  </a>
+  <h2>Current Medications</h2>
+   <div class="medicine-container">
       {{#each userMeds}}
-        <div>
-          <p>{{this.medicine_name}}</p>    
-        </div>
+        <a href="/medicine/{{this.id}}">
+          <button class="medicine-btn">{{this.medicine_name}} &nbsp; {{this.dosage_mg}}mg &nbsp; {{this.frequency}}</button>
+        </a>
       {{/each}}
     </div>
 </main>

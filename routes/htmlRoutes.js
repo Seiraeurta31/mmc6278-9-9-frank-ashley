@@ -32,6 +32,7 @@ router.get("/dashboard", checkAuth, controllers.userMedicine.getAllMedicines);
 //Search page is refreshed with result info below search 
 router.get("/search", async (req, res) => {
   if (!req.session.isLoggedIn) return res.redirect("/");
+  const isLoggedIn = req.session.isLoggedIn
 
   //TO DO: Get query param from URL working
   if(req.query.medName){
@@ -40,16 +41,16 @@ router.get("/search", async (req, res) => {
     
     if(response == "Medicine not found"){
       const error = response
-      res.render("search", {error})
+      res.render("search", {error, isLoggedIn})
     }
     else{
-      res.render("search", {response})
+      res.render("search", {response, isLoggedIn})
     }
       
     
   }  
   else{
-    res.render("search")
+    res.render("search", {isLoggedIn})
   }
   
 });
