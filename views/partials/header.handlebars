@@ -1,8 +1,9 @@
 <header>
   <a class="site-logo" href="/">
-    Auth Example! 🕵️
+    Pill Tracker 
   </a>
   {{#if isLoggedIn}}
+    <a href="/dashboard">Home</a>
     <a href="/api/logout">Logout</a>
   {{else}}
     <a href="/login">Login</a>

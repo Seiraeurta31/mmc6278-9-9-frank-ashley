@@ -3,16 +3,20 @@
   --dark-grey: #171c1c;
   --light-grey: #a7b9b7;
   --primary: #5cc1bb;
-  --primary-dark: #41aaa3;
-  --secondary: hsl(15deg 100% 62%);
-  --secondary-light: hsl(15deg 100% 70%);
+  --primary-dark: rgb(10, 79, 90);
+  --secondary: hsl(356, 75%, 68%);
+  --secondary-light: hsl(190, 58%, 45%);
   --text-color: #f5fffe;
   --space: 16px;
   --font-size: 18px;
 }
 
 body {
-  background-color: var(--primary-dark);
+  background-color: var(--primary);
+  background-image: url('./assets/Free-Medicine-Background.jpg');
+  background-size: 100%;
+  background-position:center center;
+  background-repeat: repeat;
   color: var(--text-color);
   font-size: var(--font-size);
   line-height: 1.5;
@@ -26,11 +30,13 @@ body {
 
 main {
   box-sizing: border-box;
-  width: 100%;
+  
+  width: 80%;
   max-width: 960px;
-  margin: 0 auto;
-  background-color: var(--black);
-  padding: var(--space) calc(var(--space) * 3);
+  margin: 100px;
+  background-color: var(--primary-dark);
+  padding: 30px;
+  align-self: center;
   text-align: center;
 }
 
@@ -62,6 +68,7 @@ button.btn {
   border: var(--text-color);
   border-radius: 4px;
   background-color: var(--secondary-light);
+  margin: 20px;
   padding: calc(var(--space) * 0.75) calc(var(--space) * 2);
   cursor: pointer;
   transition: background-color 200ms;
@@ -87,7 +94,7 @@ header {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--black);
+  background-color: white;
   margin-bottom: calc(var(--space) * 6);
 }
 header a {
@@ -101,11 +108,11 @@ header .site-logo {
 
 .site-logo {
   text-align: center;
-  color: var(--text-color);
+  color: var(--primary-dark);
   text-decoration: none;
   margin: calc(var(--space) * 4) auto;
   display: block;
-  font-size: calc(var(--font-size) * 2.5);
+  font-size: calc(var(--font-size) * 4);
   font-weight: bold;
 }
 
