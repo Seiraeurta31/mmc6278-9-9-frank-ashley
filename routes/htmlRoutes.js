@@ -34,10 +34,9 @@ router.get("/search", async (req, res) => {
   if (!req.session.isLoggedIn) return res.redirect("/");
   const isLoggedIn = req.session.isLoggedIn
 
+  //if routed to /search?query=value, provide feedback to user
   if (req.query.medName){
-    console.log("query params triggered")
     const {medName} = req.query
-    console.log(medName)
     res.render("search", {isLoggedIn, medName}) 
   }
   else{
@@ -46,11 +45,12 @@ router.get("/search", async (req, res) => {
       
 });
 
-
 //Route for "/add" to render "search" add_medicine template & populates medicine name from URL query param
-router.get("/add", async (req, res) => {
+router.get("/addMedicine", async (req, res) => {
   if (!req.session.isLoggedIn) return res.redirect("/");
-  res.render("add_medicine");
+  const {medName} = req.query
+  console.log("med name from query:" + medName)
+  res.render("add_medicine", {medName});
 });
 
 

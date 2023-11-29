@@ -1,2 +1,17 @@
-{{!Present either med form with query name OR Error message with button to go back to search page}}
-{{medName}} 
+{{> header}}
+<main>
+  <h1>Enter medicine details</h1>
+  <form class="login-form" action="/api/addMedicine" method="POST">
+
+    <label for="medicine_name">Medicine Name</label>
+    <input type="text" name="medicine_name" value="{{medName}}" id="medicine_name">
+
+    <label for="dosage_mg">Dosage</label>
+    <input type="text" name="dosage_mg" id="dosage_mg">
+
+    <label for="frequency">Frequency</label>
+    <input type="text" name="frequency" id="frequency">
+
+    <button class="btn">Add Medicine</button>
+  </form>
+</main>

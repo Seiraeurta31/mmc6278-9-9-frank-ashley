@@ -59,6 +59,8 @@ async function addMedicine(req, res) {
         frequency
     } = req.body
 
+    console.log(medicine_name, dosage_mg, frequency)
+
     if (!(
         medicine_name &&
         dosage_mg &&

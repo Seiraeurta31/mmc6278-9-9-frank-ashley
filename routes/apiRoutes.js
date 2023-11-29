@@ -11,34 +11,29 @@ router.post("/signup", controllers.user.create);
 router.post("/search", async (req, res) => {
     if (!req.session.isLoggedIn) return res.redirect("/");
     const isLoggedIn = req.session.isLoggedIn
+    let {newMedName} = req.body
+
+    const searchTerm = newMedName.replaceAll(" ", "+")
+    const response = await controllers.userMedicine.getMedNameSearch(searchTerm)
   
-    console.log("results triggered")
-    const {newMedName} = req.body
-    console.log (req.body)
-    const response = await controllers.userMedicine.getMedNameSearch(newMedName)
-  
-    console.log(response)
-    
+
     if(response === "Medicine not found"){
-      console.log("error triggered")
-      const error = response
-      res.render("search", {error, isLoggedIn})
+        const error = response
+        res.render("search", {error, isLoggedIn})
     }
     else if (response == newMedName){
-      console.log("medicine valid")
-      res.render("add", {response, isLoggedIn})
+        res.redirect("/addMedicine?medName=" + response)
     }
     else {
-      console.log("confirm alternate name triggered")
-      const confirmName = response
-      res.render("search", {response, isLoggedIn, confirmName})
+        const confirmName = response
+        res.render("search", {response, isLoggedIn, confirmName})
     }
          
   });
   
 
 //Route to post a new medicine to database from "/medicine" page
-router.post("/add", controllers.userMedicine.addMedicine);
+router.post("/addMedicine", controllers.userMedicine.addMedicine);
 
 //Route to update current medicine in database from "/medicine page/medicine id" page
 router.put("/medicine/:id", controllers.userMedicine.updateMedicine);
