@@ -11,20 +11,24 @@ router.post("/signup", controllers.user.create);
 router.post("/search", async (req, res) => {
     if (!req.session.isLoggedIn) return res.redirect("/");
     const isLoggedIn = req.session.isLoggedIn
+
+    //take in user input for med name
     let {newMedName} = req.body
 
+    //convert multi word user input to + concatnated string for external API search
     const searchTerm = newMedName.replaceAll(" ", "+")
     const response = await controllers.userMedicine.getMedNameSearch(searchTerm)
   
 
+    // use API response to prompt user or redirect to /addMedicine with query param of valid med name
     if(response === "Medicine not found"){
-        const error = response
+        const error = true
         res.render("search", {error, isLoggedIn})
     }
-    else if (response == newMedName){
+    else if (response == newMedName){ //med name verified, redirected to add med page with query param
         res.redirect("/addMedicine?medName=" + response)
     }
-    else {
+    else { //prompt user with alternate entry option
         const confirmName = response
         res.render("search", {response, isLoggedIn, confirmName})
     }

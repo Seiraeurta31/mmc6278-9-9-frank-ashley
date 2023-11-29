@@ -19,10 +19,11 @@ async function getAllMedicines(req, res) {
 async function getMedicine(req, res) {
 
   const id = req.params.id
-  let userMedicine = await Medicine.queryMedicine(id)
+  const [{medicine_name, dosage_mg, frequency}] = await Medicine.queryMedicine(id)
+
   const isLoggedIn = req.session.isLoggedIn
 
-  res.render('medicine', {userMedicine, isLoggedIn})
+  res.render('medicine', {medicine_name, dosage_mg, frequency, id, isLoggedIn})
 }
 
 //Function to retrieve formal FDA approved medicine name from /search, or error if not found
@@ -83,6 +84,7 @@ async function addMedicine(req, res) {
 //Must replace page with window.location.replace('/dashboard') in public index.js with action & method 
 async function updateMedicine(req, res) {
 
+  
   try {
 
     const medId = req.params.id
@@ -104,9 +106,12 @@ async function updateMedicine(req, res) {
    
     const success = await Medicine.queryUpdateMedicine(medicine_name, dosage_mg, frequency, medId)
 
-    if (success)
+    if (success){
+      console.log ("update success")
       res.status(204).end()
+
       // TO DO: Redirect user with window.location.replace('/dashboard') in public index.js with action & method 
+    }
     else
       res.status(404).send('Unable to find Medicine')
 
@@ -117,14 +122,15 @@ async function updateMedicine(req, res) {
 
 //Function to delete a user medicine: Remove displayed med per /MedInfo/:id route
 async function removeMedicine(req, res) {
-  
-  try{
 
+  console.log("remove triggered")
+  try{
     const medId = req.params.id
     const success = await Medicine.queryRemoveMedicine(medId)
 
-    if (success)
+    if (success){
       res.status(204).end()
+    }
     else
       res.status(404).send('Unable to delete Medicine')
   }

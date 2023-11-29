@@ -28,31 +28,20 @@ router.get("/dashboard", checkAuth, controllers.userMedicine.getAllMedicines);
 
 
 //Route for "/search" to render "search" template
-//***When search button is pressed, the page is redirected back and triggers external API data to validate user input for medicine name 
-//Search page is refreshed with result info below search 
 router.get("/search", async (req, res) => {
   if (!req.session.isLoggedIn) return res.redirect("/");
   const isLoggedIn = req.session.isLoggedIn
-
-  //if routed to /search?query=value, provide feedback to user
-  if (req.query.medName){
-    const {medName} = req.query
-    res.render("search", {isLoggedIn, medName}) 
-  }
-  else{
-    res.render("search", {isLoggedIn}) 
-  }
-      
+  res.render("search", {isLoggedIn})      
 });
 
 //Route for "/add" to render "search" add_medicine template & populates medicine name from URL query param
 router.get("/addMedicine", async (req, res) => {
   if (!req.session.isLoggedIn) return res.redirect("/");
+  const isLoggedIn = req.session.isLoggedIn
+  //Pass in confirmed med name submission from /api/search (POST) to render in template
   const {medName} = req.query
-  console.log("med name from query:" + medName)
-  res.render("add_medicine", {medName});
+  res.render("add_medicine", {medName, isLoggedIn});
 });
-
 
 //Route for "/medicine/:id" to render "/medicine_id" template with specific medicine from req params from url
 router.get("/medicine/:id", checkAuth, controllers.userMedicine.getMedicine);

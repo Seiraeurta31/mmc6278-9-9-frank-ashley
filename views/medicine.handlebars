@@ -1,14 +1,21 @@
 {{> header}}
 <main>
-  <h1>Login</h1>
-  <form class="login-form" action="/api/login" method="POST">
-    <label for="username">Username</label>
-    <input type="text" name="username" id="username">
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" required>
-    {{#if error}}
-      <p class="login-error">{{error}}</p>
-    {{/if}}
-    <button class="btn">Submit</button>
+  <h1>Update or Delete Medicine</h1>
+  <form class="login-form">
+
+    <label for="medicine_name">Medicine Name</label>
+    <input type="text" name="medicine_name" value="{{medicine_name}}" id="medicine_name">
+
+    <label for="dosage_mg">Dosage</label>
+    <input type="text" name="dosage_mg" value="{{dosage_mg}}" id="dosage_mg" >
+
+    <label for="frequency">Frequency</label>
+    <input type="text" name="frequency" value="{{frequency}}" id="frequency">
+
+    <button class="btn" medId="{{id}}" id="updateButton" >Update</button>
   </form>
+
+  <button class="btn" name="deleteButton" type="submit" medId="{{id}}" id="deleteButton">Delete</button>
+
+
 </main>

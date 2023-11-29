@@ -7,11 +7,11 @@
       Did you mean {{response}}? </br>
       If so, click submit, otherwise enter a new medicine name.
       </p> 
-    {{!-- <p>Did you mean <a href="/search?medName={{response}}">{{response}}</a></p>  --}}
     {{/if}}
 
     {{#if error}}
-    <p>{{error}}</p> 
+      <h2>Medicine Not Found</h2>
+      <p>Please check spelling and/or enter valid FDA approved medication name</p> 
     {{/if}}
 
     </div>
