@@ -34,27 +34,17 @@ router.get("/search", async (req, res) => {
   if (!req.session.isLoggedIn) return res.redirect("/");
   const isLoggedIn = req.session.isLoggedIn
 
-  //TO DO: Get query param from URL working
-  if(req.query.medName){
-    const response = await controllers.userMedicine.getMedNameSearch(req.query.medName)
-
-    
-    if(response == "Medicine not found"){
-      const error = response
-      res.render("search", {error, isLoggedIn})
-    }
-    else{
-      res.render("search", {response, isLoggedIn})
-    }
-      
-    
-  }  
-  else{
-    res.render("search", {isLoggedIn})
+  if (req.query.medName){
+    console.log("query params triggered")
+    const {medName} = req.query
+    console.log(medName)
+    res.render("search", {isLoggedIn, medName}) 
   }
-  
+  else{
+    res.render("search", {isLoggedIn}) 
+  }
+      
 });
-
 
 
 //Route for "/add" to render "search" add_medicine template & populates medicine name from URL query param
