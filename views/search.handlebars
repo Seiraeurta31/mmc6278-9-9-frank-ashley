@@ -17,9 +17,25 @@
     </div>
   <form class="login-form" action="/api/search" method="POST">
     <label for="newMedName">Medicine Name</label>
-    <input type="text" name="newMedName" {{#if confirmName}} value="{{confirmName}}" {{/if}} id="newMedName">
+    <input type="text" name="newMedName" {{#if confirmName}} data-value="{{confirmName}}" value="{{confirmName}}" {{/if}} id="newMedName">
     <button class="btn">Submit</button>
   </form>
   
 </main>
+
+<script>
+  document.querySelector("input").onchange = function(e) {
+
+    const originalValue = e.target.dataset.value 
+    const value = e.target.value
+    const button = document.querySelector("button")
+    if(originalValue === value) {
+      button.textContent = "Submit"
+    }
+    else{
+      button.textContent = "Search"
+    }
+  }
+
+</script>
 
