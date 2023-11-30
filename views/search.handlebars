@@ -1,6 +1,7 @@
 {{> header}}
 <main>
-  <h1>Enter new Medication Name</h1>
+  <h1>Search for medicine name</h1>
+  <h4>from FDA database</h4>
   <div>
     {{#if response}}
       <p>
@@ -18,7 +19,7 @@
   <form class="search-form" action="/api/search" method="POST">
     <label for="newMedName">Medicine Name</label>
     <input type="text" name="newMedName" {{#if confirmName}} data-value="{{confirmName}}" value="{{confirmName}}" {{/if}} id="newMedName">
-    <button class="btn">Submit</button>
+    <button class="btn">Search</button>
   </form>
   
 </main>
