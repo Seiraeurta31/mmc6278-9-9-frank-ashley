@@ -1,6 +1,7 @@
 {{> header}}
 <main>
-  <h1>Create an Account</h1>
+  <h1 class="app_name_script">My Medicine</h1>
+  <h2>Tracker</h2>
   <form class="login-form" action="/api/signup" method="POST">
     <label for="username">Username</label>
     <input type="text" name="username" id="username">
@@ -9,6 +10,6 @@
     {{#if error}}
       <p class="login-error">{{error}}</p>
     {{/if}}
-    <button class="btn">Submit</button>
+    <button class="btn">Sign Up</button>
   </form>
 </main>

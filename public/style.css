@@ -4,12 +4,20 @@
   --light-grey: #a7b9b7;
   --primary: #5cc1bb;
   --primary-dark: rgb(10, 79, 90);
-  --secondary: hsl(356, 75%, 68%);
+  --secondary: indianred;
   --secondary-light: hsl(190, 58%, 45%);
   --text-color: #f5fffe;
   --space: 16px;
   --font-size: 18px;
 }
+
+
+@font-face {
+  font-family: "Cottage";
+  src: url(./fonts/Cottage.ttf);
+}
+
+
 
 body {
   background-color: var(--primary);
@@ -32,9 +40,9 @@ main {
   box-sizing: border-box;
   width: 80%;
   max-width: 960px;
-  margin: 100px;
-  background-color: var(--primary-dark);
-  padding: 30px;
+  margin: 15px;
+  /* background-color: var(--primary-dark); */
+  padding: 15px;
   align-self: center;
   text-align: center;
 }
@@ -42,16 +50,27 @@ main {
 main,
 main form {
   border-radius: 4px;
+  padding: 60px;
 }
 
 h1 {
-  font-size: calc(var(--font-size) * 2.5);
+  /* font-family: Cottage; */
+  font-size: calc(var(--font-size) * 2);
+  color: var(--primary-dark);
+  margin-bottom: -1px;
 }
 h2 {
-  font-size: calc(var(--font-size) * 1.5);
+  font-size: calc(var(--font-size) * 2.5);
+  color:darkcyan;
+  margin: -20px;
 }
 h3 {
   font-size: calc(var(--font-size) * 0.5);
+}
+
+.app_name_script{
+  font-family: Cottage;
+  font-size: calc(var(--font-size) * 5);
 }
 
 a {
@@ -63,6 +82,22 @@ a:focus {
   color: var(--secondary);
 }
 
+p {
+  margin:10px;
+  color: var(--primary-dark);
+  align-self: center;
+  text-justify: center;
+}
+
+label{
+  color: var(--primary-dark);
+}
+
+input{
+  border-radius: 6px;
+  border-color: indianred;
+  text-align: center;
+}
 
 button.btn {
   border: var(--text-color);
@@ -127,16 +162,29 @@ header {
   justify-content: space-between;
   align-items: center;
   background-color: white;
-  margin-bottom: calc(var(--space) * 6);
+  margin-bottom: calc(var(--space) * 1);
 }
 header a {
   margin: var(--space);
+  font-size: 20px;
 }
 header .site-logo {
-  font-size: calc(var(--font-size) * 1.5);
-  margin: var(--space);
+  font-size: 24px;
+  margin: 10px;
   margin-right: auto;
 }
+
+header .stylize {
+  font-family: Cottage;
+  font-size: calc(var(--font-size) * 2);
+}
+
+.logo-stylize {
+  font-family: Cottage;
+  font-size: calc(var(--font-size) * 2);
+  color: var(--primary-dark);
+}
+
 
 .site-logo {
   text-align: center;
@@ -144,11 +192,14 @@ header .site-logo {
   text-decoration: none;
   margin: calc(var(--space) * 4) auto;
   display: block;
-  font-size: calc(var(--font-size) * 4);
+  font-size: calc(var(--font-size) * 3);
   font-weight: bold;
 }
 
-.login-form {
+.login-form,
+.addMed-form,
+.medicine-form,
+.search-form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -161,16 +212,24 @@ header .site-logo {
 
 .login-form input {
   margin-bottom: calc(var(--space) * 2);
-  padding: calc(var(--space) * 0.5) calc(var(--space) * 1);
+  padding: calc(var(--space) * 0.5) calc(var(--space) * 1.5);
 }
 
-@media screen and (max-width: 700px) {
+
+
+/*************************************/
+
+@media screen and (max-width: 900px) {
   .site-logo {
-    font-size: calc(var(--font-size) * 1.25);
+    font-size: calc(var(--font-size) * .5);
     margin: 0;
   }
   header .site-logo {
-    font-size: var(--font-size);
+    font-size: 20px;
+  }
+
+  .logo-stylize {
+    font-size:24px;
   }
 
   button.medicine-btn {
@@ -180,5 +239,16 @@ header .site-logo {
 
   header a {
     margin: calc(var(--space) / 2);
+    font-size: 18px;
   }
+
+  .app_name_script{
+    font-family: Cottage;
+    font-size: calc(var(--font-size) * 2.8);
+  }
+  
+  h2 {
+    font-size: calc(var(--font-size) * 2);
+  }
+
 }
