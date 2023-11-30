@@ -40,9 +40,8 @@ main {
   box-sizing: border-box;
   width: 80%;
   max-width: 960px;
-  margin: 15px;
-  /* background-color: var(--primary-dark); */
-  padding: 15px;
+  margin: 25px;
+  padding: 60px;
   align-self: center;
   text-align: center;
 }
@@ -56,21 +55,32 @@ main form {
 h1 {
   /* font-family: Cottage; */
   font-size: calc(var(--font-size) * 2);
-  color: var(--primary-dark);
   margin-bottom: -1px;
+  color:darkcyan;
 }
 h2 {
-  font-size: calc(var(--font-size) * 2.5);
+  font-size: calc(var(--font-size) * 1.8);
   color:darkcyan;
-  margin: -20px;
+  margin-top: 20px;
+  margin-bottom: 5px;
 }
 h3 {
-  font-size: calc(var(--font-size) * 0.5);
+  font-size: 42px;
+  margin-top: -30px;
+  color:darkcyan;
+}
+
+h4 {
+  font-size: 25px;
+  margin-top: 10px;
+  color:darkcyan;
 }
 
 .app_name_script{
   font-family: Cottage;
-  font-size: calc(var(--font-size) * 5);
+  font-size: calc(var(--font-size) * 4.5);
+  margin-top: -30px;
+  color: var(--primary-dark);
 }
 
 a {
@@ -99,7 +109,7 @@ input{
   text-align: center;
 }
 
-button.btn {
+button.btn, .add-btn {
   border: var(--text-color);
   border-radius: 4px;
   background-color: var(--secondary-light);
@@ -133,6 +143,7 @@ button.btn-text:focus {
   display: flex;
   align-items: center;
   flex-direction: column;
+  margin-top: -15px;
 }
 
 
@@ -151,10 +162,6 @@ button.medicine-btn {
   cursor: pointer;
   transition: background-color 200ms;
 }
-
-
-
-
 
 header {
   display: flex;
@@ -220,12 +227,28 @@ header .stylize {
 /*************************************/
 
 @media screen and (max-width: 900px) {
+
+  main {
+    padding: 30px;
+  }
+
+  .add-btn {
+    padding: calc(var(--space) * 0.75) calc(var(--space) * 1);
+    
+  }
+
   .site-logo {
     font-size: calc(var(--font-size) * .5);
     margin: 0;
   }
   header .site-logo {
     font-size: 20px;
+  }
+
+  h3 {
+    font-size: 18px;
+    margin-top: -30px;
+    color:darkcyan;
   }
 
   .logo-stylize {
@@ -244,11 +267,11 @@ header .stylize {
 
   .app_name_script{
     font-family: Cottage;
-    font-size: calc(var(--font-size) * 2.8);
+    font-size: calc(var(--font-size) * 2.4);
   }
   
   h2 {
-    font-size: calc(var(--font-size) * 2);
+    font-size: calc(var(--font-size) * 1.5);
   }
 
 }
