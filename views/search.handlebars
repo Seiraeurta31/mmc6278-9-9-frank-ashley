@@ -1,12 +1,13 @@
 {{> header}}
 <main>
-  <h1>Search for medicine name</h1>
-  <h4>from FDA database</h4>
+  <h1 class="app_name_script">Search</h1>
+  <h5>Medicine Name</h5>
+  <h4>Medicine validaded by FDA database</h4>
   <div>
     {{#if response}}
-      <p>
+      <p class="alert">
       Did you mean {{response}}? </br>
-      If so, click submit, otherwise enter a new medicine name.
+      If so, click "enter", otherwise enter a new medicine name.
       </p> 
     {{/if}}
 
@@ -18,14 +19,14 @@
     </div>
   <form class="search-form" action="/api/search" method="POST">
     <label for="newMedName">Medicine Name</label>
-    <input type="text" name="newMedName" {{#if confirmName}} data-value="{{confirmName}}" value="{{confirmName}}" {{/if}} id="newMedName">
-    <button class="btn">Search</button>
+    <input type="text" name="newMedName"  {{#if confirmName}} data-value="{{confirmName}}" value="{{confirmName}}" {{/if}} id="newMedName">
+    <button class="btn">Enter</button>
   </form>
   
 </main>
 
 <script>
-  document.querySelector("input").onchange = function(e) {
+  {{!-- document.querySelector("input").onchange = function(e) {
 
     const originalValue = e.target.dataset.value 
     const value = e.target.value
@@ -36,7 +37,7 @@
     else{
       button.textContent = "Search"
     }
-  }
+  } --}}
 
 </script>
 

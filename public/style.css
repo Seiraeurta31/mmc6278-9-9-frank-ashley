@@ -76,6 +76,16 @@ h4 {
   color:darkcyan;
 }
 
+h5 {
+  font-size: 42px;
+  margin-top: -30px;
+  color:darkcyan;
+}
+
+.alert {
+  color:indianred;
+}
+
 .app_name_script{
   font-family: Cottage;
   font-size: calc(var(--font-size) * 4.5);
@@ -233,10 +243,11 @@ header .stylize {
 
 /*************************************/
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 800px) {
 
   main {
     padding: 30px;
+    margin-top: 50px;
   }
 
   .add-btn {
@@ -279,7 +290,8 @@ header .stylize {
 
   .app_name_script{
     font-family: Cottage;
-    font-size: calc(var(--font-size) * 2.4);
+    font-size: calc(var(--font-size) * 3);
+    padding: 15px;
   }
   
   h2 {
@@ -290,4 +302,7 @@ header .stylize {
     line-height: 42px;
   }
 
+  h5 {
+    font-size: 28px;
+    margin-top: -10px;
 }
