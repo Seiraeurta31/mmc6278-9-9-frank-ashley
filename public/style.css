@@ -54,9 +54,10 @@ main form {
 
 
 
-/******headline treatment ****/
+/******headline treatments ****/
 
-h1.index-welcome {
+h1.index-welcome,
+h1.dashboard-welcome {
   margin-top: 0px;
   margin-bottom: 20px;
 }
@@ -65,15 +66,18 @@ h1.index-tracker {
   margin-top: -20px;
 }
 
-h1.index-script {
+h1.index-script,
+h1.dashboard-script {
   margin: -20px;
   font-family: Cottage;
   font-size: calc(var(--font-size) * 4.5);
   color: var(--primary-dark);
 }
 
+h1.dashboard-script {
+  padding-bottom: 40px;
+}
 
-/*****login and signup header ****/
 
 h1.login-account,
 h1.signup-account {
@@ -143,13 +147,6 @@ label{
   color: var(--primary-dark);
 }
 
-/* input{
-  border-radius: 6px;
-  border-color: indianred;
-  text-align: center;
-  font-size: 22px;
-  padding: 0px;
-} */
 
 button.btn, .add-btn {
   border: var(--text-color);
@@ -164,6 +161,7 @@ button.btn, .add-btn {
   cursor: pointer;
   transition: background-color 200ms;
 }
+
 button.btn-text {
   border: none;
   background-color: transparent;
@@ -189,7 +187,7 @@ button.btn-text:focus {
 }
 
 
-button.medicine-btn {
+.dashboard-medicine-list-btn {
   border: var(--text-color);
   border-radius: 4px;
   font-size: 16px;
@@ -299,7 +297,8 @@ header .stylize {
 
   /*****index header****/
 
-  h1.index-welcome {
+  h1.index-welcome,
+  h1.dashboard-welcome {
     margin-bottom: 30px;
   }
   
@@ -307,7 +306,8 @@ header .stylize {
     margin-top: 28px;
   }
   
-  h1.index-script {
+  h1.index-script,
+  h1.dashboard-script {
     margin: -10px;
     font-size: 50px;
   }

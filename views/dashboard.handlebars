@@ -1,7 +1,7 @@
 {{> header}}
 <main>
-  <h3>Welcome to {{username}}'s </h3>
-  <h1 class="app_name_script">Dashboard </h1>
+  <h1 class="dashboard-welcome">Welcome to {{username}}'s </h1>
+  <h1 class="dashboard-script">Dashboard </h1>
   <a href="/search">
     <button class="add-btn">Add New Medication</button>
   </a>
@@ -10,7 +10,7 @@
    <div class="medicine-container">
       {{#each userMeds}}
         <a href="/medicine/{{this.id}}">
-          <button class="medicine-btn">{{this.medicine_name}} &nbsp; {{this.dosage_mg}}mg &nbsp; {{this.frequency}}</button>
+          <button class="dashboard-medicine-list-btn">{{this.medicine_name}} &nbsp; {{this.dosage_mg}}mg &nbsp; {{this.frequency}}</button>
         </a>
       {{/each}}
     </div>
