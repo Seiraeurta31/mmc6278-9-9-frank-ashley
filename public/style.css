@@ -57,6 +57,7 @@ main form {
 /******headline treatment ****/
 
 h1.index-welcome {
+  margin-top: 0px;
   margin-bottom: 20px;
 }
 
@@ -70,6 +71,24 @@ h1.index-script {
   font-size: calc(var(--font-size) * 4.5);
   color: var(--primary-dark);
 }
+
+
+/*****login and signup header ****/
+
+h1.login-account,
+h1.signup-account {
+  margin-top: -10px;
+}
+
+h1.login-script, 
+h1.signup-script {
+  margin: -10px;
+  font-family: Cottage;
+  font-size: calc(var(--font-size) * 4.5);
+  color: var(--primary-dark);
+}
+
+
 
 
 
@@ -128,6 +147,8 @@ label{
   border-radius: 6px;
   border-color: indianred;
   text-align: center;
+  font-size: 22px;
+  padding: 0px;
 } */
 
 button.btn, .add-btn {
@@ -244,10 +265,11 @@ header .stylize {
 .medicine-form input,
 .addMed-form input {
   margin-bottom: calc(var(--space) * 2);
-  padding: calc(var(--space) * 0.5) calc(var(--space) * 1.5);
+  padding: 10px;
   border-radius: 6px;
   border-color: indianred;
   text-align: center;
+  font-size: 22px;
 }
 
 
@@ -290,11 +312,32 @@ header .stylize {
     font-size: 50px;
   }
   
+  
+ /*****Login and signup header ***/
+
+  h1.login-account,
+  h1.signup-account {
+    margin-top: 20px;
+    font-size: 30px;
+  }
+
+  h1.login-script, 
+  h1.signup-script {
+    margin: -10px;
+    font-size: 45px;
+  }
 
 
 
+  
 
+  h1 {
+    line-height: 42px;
+  }
 
+  h2 {
+    font-size: 26px;
+  }
 
   h3 {
     font-size: 22px;
@@ -303,14 +346,24 @@ header .stylize {
     color:darkcyan;
   }
 
-  index.app_name_script{
-    padding: 120px;
-    font-weight:bolder;
-  }
-
   h4 {
     font-size: 16px;
   }
+
+  h5 {
+    font-size: 28px;
+    margin-top: -10px;
+  } 
+
+
+  .login-form input,
+  .search-form input,
+  .medicine-form input,
+  .addMed-form input {
+    padding: 10px;
+    font-size: 18px;
+  }
+
 
   .logo-stylize {
     font-size:24px;
@@ -325,22 +378,6 @@ header .stylize {
     margin: calc(var(--space) / 2);
     font-size: 18px;
   }
-
-  .app_name_script{
-    font-family: Cottage;
-    font-size: calc(var(--font-size) * 3);
-    padding: 15px;
-  }
   
-  h2 {
-    font-size: 26px;
-  }
-
-  h1 {
-    line-height: 42px;
-  }
-
-  h5 {
-    font-size: 28px;
-    margin-top: -10px;
+ 
 }
