@@ -246,9 +246,14 @@ header .stylize {
   }
 
   h3 {
-    font-size: 18px;
+    font-size: 22px;
     margin-top: -30px;
+    margin-bottom: 30px;
     color:darkcyan;
+  }
+
+  h4 {
+    font-size: 16px;
   }
 
   .logo-stylize {
@@ -271,7 +276,7 @@ header .stylize {
   }
   
   h2 {
-    font-size: calc(var(--font-size) * 1.5);
+    font-size: 26px;
   }
 
 }
