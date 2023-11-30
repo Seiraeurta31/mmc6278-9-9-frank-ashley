@@ -52,12 +52,34 @@ main form {
   padding: 60px;
 }
 
+
+
+/******headline treatment ****/
+
+h1.index-welcome {
+  margin-bottom: 20px;
+}
+
+h1.index-tracker {
+  margin-top: -20px;
+}
+
+h1.index-script {
+  margin: -20px;
+  font-family: Cottage;
+  font-size: calc(var(--font-size) * 4.5);
+  color: var(--primary-dark);
+}
+
+
+
 h1 {
   /* font-family: Cottage; */
   font-size: calc(var(--font-size) * 2);
-  margin-bottom: -1px;
   color:darkcyan;
 }
+
+
 h2 {
   font-size: calc(var(--font-size) * 1.8);
   color:darkcyan;
@@ -80,12 +102,7 @@ h4 {
   color:indianred;
 }
 
-.app_name_script{
-  font-family: Cottage;
-  font-size: calc(var(--font-size) * 4.5);
-  margin-top: -30px;
-  color: var(--primary-dark);
-}
+
 
 a {
   color: var(--secondary-light);
@@ -257,11 +274,38 @@ header .stylize {
     font-size: 20px;
   }
 
+
+  /*****index header****/
+
+  h1.index-welcome {
+    margin-bottom: 30px;
+  }
+  
+  h1.index-tracker {
+    margin-top: 28px;
+  }
+  
+  h1.index-script {
+    margin: -10px;
+    font-size: 50px;
+  }
+  
+
+
+
+
+
+
   h3 {
     font-size: 22px;
     margin-top: -30px;
     margin-bottom: 30px;
     color:darkcyan;
+  }
+
+  index.app_name_script{
+    padding: 120px;
+    font-weight:bolder;
   }
 
   h4 {
