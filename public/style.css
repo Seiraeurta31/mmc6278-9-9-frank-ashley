@@ -280,11 +280,11 @@ header .stylize {
 .medicine-form input,
 .addMed-form input {
   margin-bottom: calc(var(--space) * 2);
-  /* padding: 50px; */
+  padding: 10px;
   border-radius: 6px;
   border-color: indianred;
   text-align: center;
-  font-size: 22px;
+  font-size: 20px;
   text-wrap: wrap;
 }
 
