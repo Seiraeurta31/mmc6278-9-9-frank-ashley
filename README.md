@@ -8,7 +8,7 @@ DESIGN:
 The following is the prelimiary design mock up used for development and is provided below as a reference to represent the design process and the overall flow of the website described in the "function section". 
  
 
-
+![Alt text](/SiteWalkThrough.jpg)
 
 
 
