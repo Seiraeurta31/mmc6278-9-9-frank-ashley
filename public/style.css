@@ -321,7 +321,7 @@ header .stylize {
   
   h1.index-tracker,
   h1.addMedicine-details {
-    margin-top: 28px;
+    margin-top: 24px;
   }
   
   h1.index-script,
@@ -329,7 +329,7 @@ header .stylize {
   h1.search-script,
   h1.addMedicine-script {
     margin: -10px;
-    font-size: 50px;
+    font-size: 48px;
   }
   
   
@@ -344,7 +344,7 @@ header .stylize {
   h1.login-script, 
   h1.signup-script {
     margin: -10px;
-    font-size: 45px;
+    font-size: 40px;
   }
 
   h1.search-medicine {
