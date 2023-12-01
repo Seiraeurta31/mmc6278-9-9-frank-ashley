@@ -16,7 +16,6 @@ async function create(req, res) {
     req.session.userName = user.username;
     req.session.save(() => res.redirect("/dashboard"));
   } catch (err) {
-    console.log(err);
     return res.redirect(`/signup?error=${err.message}`);
   }
 

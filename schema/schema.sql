@@ -1,4 +1,3 @@
--- CREATE DATABASE mysql_project_db;
 USE mysql_project_db;
 
 CREATE TABLE users (

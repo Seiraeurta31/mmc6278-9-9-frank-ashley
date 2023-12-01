@@ -10,7 +10,6 @@ async function getAllMedicines(req, res) {
 
   const userMeds = await Medicine.queryAllMedicine(userId)
 
-
   res.render('dashboard', {userMeds, userId, isLoggedIn, username})
   
 }
@@ -60,8 +59,6 @@ async function addMedicine(req, res) {
         frequency
     } = req.body
 
-    console.log(medicine_name, dosage_mg, frequency)
-
     if (!(
         medicine_name &&
         dosage_mg &&
@@ -83,7 +80,6 @@ async function addMedicine(req, res) {
 //Function to update user medicine / redirect to /dashboard. 
 //Must replace page with window.location.replace('/dashboard') in public index.js with action & method 
 async function updateMedicine(req, res) {
-
   
   try {
 
@@ -107,10 +103,8 @@ async function updateMedicine(req, res) {
     const success = await Medicine.queryUpdateMedicine(medicine_name, dosage_mg, frequency, medId)
 
     if (success){
-      console.log ("update success")
       res.status(204).end()
 
-      // TO DO: Redirect user with window.location.replace('/dashboard') in public index.js with action & method 
     }
     else
       res.status(404).send('Unable to find Medicine')
@@ -123,7 +117,6 @@ async function updateMedicine(req, res) {
 //Function to delete a user medicine: Remove displayed med per /MedInfo/:id route
 async function removeMedicine(req, res) {
 
-  console.log("remove triggered")
   try{
     const medId = req.params.id
     const success = await Medicine.queryRemoveMedicine(medId)
@@ -137,7 +130,6 @@ async function removeMedicine(req, res) {
   catch (err) {
     res.status(500).send('Error deleting medication: ' + err.message)
   }
-   // TO DO: Redirect user with window.location.replace('/dashboard') in public index.js with action & method 
 }
 
 module.exports = { getAllMedicines, getMedicine, getMedNameSearch, updateMedicine, addMedicine, removeMedicine }; 

@@ -7,7 +7,7 @@ router.post("/login", controllers.auth.login);
 router.get("/logout", controllers.auth.logout);
 router.post("/signup", controllers.user.create);
 
-
+//Route to search for new medicine in external database on "/search" page
 router.post("/search", async (req, res) => {
     if (!req.session.isLoggedIn) return res.redirect("/");
     const isLoggedIn = req.session.isLoggedIn
@@ -36,7 +36,6 @@ router.post("/search", async (req, res) => {
          
   });
   
-
 //Route to post a new medicine to database from "/medicine" page
 router.post("/addMedicine", controllers.userMedicine.addMedicine);
 
@@ -45,6 +44,5 @@ router.put("/medicine/:id", controllers.userMedicine.updateMedicine);
 
 //Route to delete medicine in database from "/medicine page/medicine id" page
 router.delete("/medicine/:id", controllers.userMedicine.removeMedicine);
-
 
 module.exports = router;

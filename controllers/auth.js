@@ -24,7 +24,7 @@ async function login(req, res) {
     if (!passwordMatches)
       return res.redirect("/login?error=username or password is incorrect");
 
-    //set session logegdin status to true, save the session and send to /
+    //Capture logged in status, user id, and username in session
     req.session.isLoggedIn = true;
     req.session.userId = user.id;
     req.session.userName = user.username;
@@ -33,8 +33,6 @@ async function login(req, res) {
     res.status(500).send(err.message);
   }
 }
-
-
 
 async function logout(req, res) {
   req.session.destroy(() => res.redirect("/"));

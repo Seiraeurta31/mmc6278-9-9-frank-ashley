@@ -22,10 +22,8 @@ router.get("/signup", async (req, res) => {
   res.render("signup", { error: req.query.error });
 });
 
-
 // //Route for /dashboard which gets all user medicine and render /dashboard template
 router.get("/dashboard", checkAuth, controllers.userMedicine.getAllMedicines);
-
 
 //Route for "/search" to render "search" template
 router.get("/search", async (req, res) => {
