@@ -1,12 +1,13 @@
 {{> header}}
 <main>
-  <h1 class="search-script">Search</h1>
+  <h1 class="search-script">Medicine</h1>
+  <h1 class="search-medicine">Update</h1>
   <form class="medicine-form">
 
     <label for="medicine_name">Medicine Name</label>
     <input type="text" name="medicine_name" value="{{medicine_name}}" id="medicine_name">
 
-    <label for="dosage_mg">Dosage</label>
+    <label for="dosage_mg">Dosage (mg)</label>
     <input type="text" name="dosage_mg" value="{{dosage_mg}}" id="dosage_mg" >
 
     <label for="frequency">Frequency</label>
@@ -15,6 +16,7 @@
     <button class="btn" data-medId="{{id}}" id="updateButton" >Update</button>
   </form>
 
+  <h2 class="search-script">Delete Medicine</h1>
   <button class="btn" name="deleteButton" type="submit" data-medId="{{id}}" id="deleteButton">Delete</button>
 
 

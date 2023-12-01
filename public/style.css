@@ -265,7 +265,7 @@ header .stylize {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: calc(var(--space) * 3) 0;
+  padding: 3px;
   
 }
 
