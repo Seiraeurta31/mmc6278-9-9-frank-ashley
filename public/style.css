@@ -211,12 +211,14 @@ button.btn-text:focus {
   color:rgb(23, 118, 144);
   background-color: var(white);
   margin: 20px;
-  width: 400px;
-  height: 40px;
-  padding: calc(var(--space) * 0.75) calc(var(--space) * 2);
+  width: 350px;
+  height: 70px;
+  padding: 100px, 10px;
   cursor: pointer;
-  transition: background-color 200ms;
+  text-wrap: wrap;
 }
+
+
 
 header {
   display: flex;
@@ -278,13 +280,13 @@ header .stylize {
 .medicine-form input,
 .addMed-form input {
   margin-bottom: calc(var(--space) * 2);
-  padding: 10px;
+  /* padding: 50px; */
   border-radius: 6px;
   border-color: indianred;
   text-align: center;
   font-size: 22px;
+  text-wrap: wrap;
 }
-
 
 
 /*************************************/
