@@ -31,6 +31,7 @@ router.post("/search", async (req, res) => {
     else { //prompt user with alternate entry option
         const confirmName = response
         res.render("search", {response, isLoggedIn, confirmName})
+        
     }
          
   });

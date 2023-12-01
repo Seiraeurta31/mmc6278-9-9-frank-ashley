@@ -1,12 +1,12 @@
 {{> header}}
 <main>
-  <h1 class="app_name_script">Search</h1>
-  <h5>Medicine Name</h5>
-  <h4>Medicine validaded by FDA database</h4>
+  <h1 class="search-script">Search</h1>
+  <h1 class="search-medicine">Medicine Name</h1>
+  <h2>Medicine validaded by FDA database</h2>
   <div>
     {{#if response}}
       <p class="alert">
-      Did you mean {{response}}? </br>
+      Did you mean </br> {{response}}? </br>
       If so, click "enter", otherwise enter a new medicine name.
       </p> 
     {{/if}}
@@ -20,24 +20,24 @@
   <form class="search-form" action="/api/search" method="POST">
     <label for="newMedName">Medicine Name</label>
     <input type="text" name="newMedName"  {{#if confirmName}} data-value="{{confirmName}}" value="{{confirmName}}" {{/if}} id="newMedName">
-    <button class="btn">Enter</button>
+    <button class="btn">Submit</button>
   </form>
   
 </main>
 
 <script>
-  {{!-- document.querySelector("input").onchange = function(e) {
-
-    const originalValue = e.target.dataset.value 
-    const value = e.target.value
-    const button = document.querySelector("button")
-    if(originalValue === value) {
-      button.textContent = "Submit"
-    }
-    else{
+  //If input has value and text box was NOT clicked, button set to default "Submit"
+  const button = document.querySelector("button")
+  
+  //If input has no value (upon page load), button is defualted to "Search"
+  const input = document.querySelector("input").dataset.value
+  if(!input){
+    button.textContent = "Search"
+  }
+  //If text box is clicked to change value, button is set to Search
+  document.querySelector("input").onclick = function(e) {
       button.textContent = "Search"
-    }
-  } --}}
+  }
 
 </script>
 

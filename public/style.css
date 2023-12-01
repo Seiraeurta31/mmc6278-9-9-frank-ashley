@@ -62,12 +62,14 @@ h1.dashboard-welcome {
   margin-bottom: 20px;
 }
 
-h1.index-tracker {
+h1.index-tracker,
+h1.search-medicine {
   margin-top: -20px;
 }
 
 h1.index-script,
-h1.dashboard-script {
+h1.dashboard-script,
+h1.search-script {
   margin: -20px;
   font-family: Cottage;
   font-size: calc(var(--font-size) * 4.5);
@@ -104,7 +106,7 @@ h1 {
 
 
 h2 {
-  font-size: calc(var(--font-size) * 1.8);
+  font-size: 22px;
   color:darkcyan;
   margin-top: 20px;
   margin-bottom: 5px;
@@ -307,7 +309,8 @@ header .stylize {
   }
   
   h1.index-script,
-  h1.dashboard-script {
+  h1.dashboard-script,
+  h1.search-script {
     margin: -10px;
     font-size: 50px;
   }
@@ -327,7 +330,10 @@ header .stylize {
     font-size: 45px;
   }
 
-
+  h1.search-medicine {
+    font-size: 30px;
+    margin-top: 20px;
+  }
 
   
 
@@ -336,7 +342,7 @@ header .stylize {
   }
 
   h2 {
-    font-size: 26px;
+    font-size: 16px;
   }
 
   h3 {
@@ -369,7 +375,7 @@ header .stylize {
     font-size:24px;
   }
 
-  button.medicine-btn {
+  .dashboard-medicine-list-btn {
     width: 300px;
     height: 60px;
   }
