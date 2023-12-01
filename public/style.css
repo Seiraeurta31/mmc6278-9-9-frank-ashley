@@ -63,7 +63,8 @@ h1.dashboard-welcome {
 }
 
 h1.index-tracker,
-h1.search-medicine {
+h1.search-medicine,
+h1.addMedicine-details {
   margin-top: -20px;
 }
 
@@ -80,6 +81,13 @@ h1.dashboard-script {
   padding-bottom: 40px;
 }
 
+h1.addMedicine-script {
+  margin: -20px;
+  font-family: Cottage;
+  font-size: calc(var(--font-size) * 4.5);
+  color: var(--primary-dark);
+}
+
 
 h1.login-account,
 h1.signup-account {
@@ -94,40 +102,45 @@ h1.signup-script {
   color: var(--primary-dark);
 }
 
-
-
+h1, h2, h3, h4, h5 {
+  color:darkcyan;
+  font-family: helvetica;
+}
 
 
 h1 {
-  /* font-family: Cottage; */
-  font-size: calc(var(--font-size) * 2);
-  color:darkcyan;
+  font-size: 36px; 
 }
 
-
 h2 {
-  font-size: 22px;
-  color:darkcyan;
+  font-size: 28px;
   margin-top: 20px;
   margin-bottom: 5px;
 }
-h3, h5 {
+
+h3 {
+  font-size: 18px;
+  margin-top: -10px;
+} 
+
+h5 {
   font-size: 42px;
   margin-top: -30px;
-  color:darkcyan;
 }
 
 h4 {
   font-size: 25px;
   margin-top: 10px;
-  color:darkcyan;
 }
 
 .alert {
   color:indianred;
 }
 
-
+.alert-header {
+  font-size: 40px;
+  color:indianred;
+}
 
 a {
   color: var(--secondary-light);
@@ -304,13 +317,15 @@ header .stylize {
     margin-bottom: 30px;
   }
   
-  h1.index-tracker {
+  h1.index-tracker,
+  h1.addMedicine-details {
     margin-top: 28px;
   }
   
   h1.index-script,
   h1.dashboard-script,
-  h1.search-script {
+  h1.search-script,
+  h1.addMedicine-script {
     margin: -10px;
     font-size: 50px;
   }
@@ -342,25 +357,16 @@ header .stylize {
   }
 
   h2 {
-    font-size: 16px;
+    font-size: 25px;
   }
 
   h3 {
-    font-size: 22px;
-    margin-top: -30px;
-    margin-bottom: 30px;
-    color:darkcyan;
+    font-size: 16px;
   }
 
   h4 {
     font-size: 16px;
   }
-
-  h5 {
-    font-size: 28px;
-    margin-top: -10px;
-  } 
-
 
   .login-form input,
   .search-form input,

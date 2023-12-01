@@ -2,7 +2,7 @@
 <main>
   <h1 class="search-script">Search</h1>
   <h1 class="search-medicine">Medicine Name</h1>
-  <h2>Medicine validaded by FDA database</h2>
+  <h3>Medicine validaded by FDA database</h3>
   <div>
     {{#if response}}
       <p class="alert">
@@ -12,8 +12,8 @@
     {{/if}}
 
     {{#if error}}
-      <h2>Medicine Not Found</h2>
-      <p>Please check spelling and/or enter valid FDA approved medication name</p> 
+      <h2 class="alert-header">Medicine Not Found</h2>
+      <p class="alert">Please check spelling and/or enter valid FDA approved medication name</p> 
     {{/if}}
 
     </div>
@@ -34,9 +34,11 @@
   if(!input){
     button.textContent = "Search"
   }
-  //If text box is clicked to change value, button is set to Search
+  //If text box is clicked to change value AND value is changed, button is set to Search
   document.querySelector("input").onclick = function(e) {
-      button.textContent = "Search"
+    document.querySelector("input").onchange = function(e) {
+        button.textContent = "Search" 
+    } 
   }
 
 </script>
